@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-image: url('BG.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #e9ecef; 
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+                /* Light Theme Styles */
+                body.light-theme {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        body.light-theme .container {
+            background-color: #f4a5fc;
+            color: #67256a;
+            border-color: #48155f;
+
+        }
+       body.light-theme  .item {
+            background-color: rgba(249, 222, 252, 0.9); 
+            border: 4px solid #42123e; 
+            border-radius: 10px;
+            padding: 20px;
+            color: #501d47;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.light-theme .nav-btn {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #4a1f5e;
+            border-color: #4a1f5e;
+        }
+        body.light-theme .container .header {
+            text-align: center;
+            padding: 30px;
+            color: #3e1c42; 
+        }
+        .theme-toggle-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 9999;
+            background-color: #4a1f5e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        body.light-theme .theme-toggle-btn {
+            background-color: #f4f4f4;
+            color: #4a1f5e;
+            border: 1px solid #4a1f5e;
+        }
+        body.light-theme .store-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            background-color: rgba(34, 20, 40, 0.85); 
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            z-index: 50;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            color: #edb6f3; 
+        }
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+        .header p {
+            font-size: 1.2em;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .nav-btn {
+            background-color: #824caf;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            margin: 0 8px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+        .nav-btn:hover {
+            background-color: #76388e; 
+        }
+        .category {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+        .item {
+            background-color: rgba(84, 35, 90, 0.9); 
+            border: 1px solid #bfb269; 
+            border-radius: 10px;
+            padding: 20px;
+            color: #f1f1f1;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        .store-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .store-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    .logo-container {
+        position: fixed;
+        background-image: url("logo.png");
+        background-size: cover; /* Covers entire screen */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents image from repeating */
+        background-attachment: fixed; /* Keeps background fixed while scrolling */
+        background-color: transparent;
+        width: 200px;
+        height: 200px;
+        top: 40px;
+        left: 10%;
+        transform: translateX(-50%);
+        transition: height 0.3s ease;
+        transition: width 0.3s ease;
+        border-radius: 100%;
+    }
+    /*mobile*/
+    @media screen and (max-width: 768px) {
+        .logo-container{
+            display: none;
+        }
+
+
+    }
+        
+    
+    </style>
+</head>
+<body>    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-compass">
+            <img src="campass.png" alt="Navigation Compass">
+        </div>
+        <div class="loading-text">Navigating to your destination...</div>
+    </div>
+    <button class="theme-toggle-btn">🌓 Toggle Theme</button>
+    <div class="border-container"></div>
+    
+    <div class="container">
+      
+
+        <div class="header">
+            <h1>Hiking Essentials Resource Center</h1>
+            <p>Your guide to finding the best hiking gear and equipment</p>
+        </div>
+
+        <div class="nav">
+            <button class="nav-btn" onclick="showCategory('gear')">Hiking Gear</button>
+            <button class="nav-btn" onclick="showCategory('navigation')">Navigation</button>
+            <button class="nav-btn" onclick="showCategory('safety')">Safety</button>
+        </div>
+
+        <div id="gear" class="category">
+            <div class="item">
+                <h3>Hiking Backpacks</h3>
+                <p>Find top-rated backpacks for various hiking needs</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+            <div class="item">
+                <h3>Hiking Boots</h3>
+                <p>Discover comfortable and durable hiking footwear</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+            <div class="item">
+                <h3>Hiking Clothing</h3>
+                <p>Layers and performance wear for outdoor adventures</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+        </div>
+
+        <div id="navigation" class="category hidden">
+            <div class="item">
+                <h3>GPS Devices</h3>
+                <p>Navigate trails with precision GPS technology</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+            <div class="item">
+                <h3>Compasses & Maps</h3>
+                <p>Traditional and digital navigation tools</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+            <div class="item">
+                <h3>Trail Apps</h3>
+                <p>Digital navigation and tracking applications</p>
+                <a href="#" class="store-link">Recommended Apps</a>
+            </div>
+        </div>
+
+        <div id="safety" class="category hidden">
+            <div class="item">
+                <h3>First Aid Kits</h3>
+                <p>Essential safety equipment for hikers</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+            <div class="item">
+                <h3>Emergency Gear</h3>
+                <p>Survival tools and emergency preparedness items</p>
+                <a href="#" class="store-link">Recommended Stores</a>
+            </div>
+            <div class="item">
+                <h3>Communication Devices</h3>
+                <p>Satellite messengers and emergency communication</p>
+                <a href="#" class="store-link">Recommended Devices</a>
+            </div>
+        </div>
+
+        <div class = "logo-container" ></div>
+               <!--Compass-->
+               <div class="compass-container">
+                <a href="main.html" class="direction north-label">Home</a>
+                <a href="trails.html" class="direction east-label">Trails</a>
+                <a href="FAQ.html" class="direction southeast-label">FAQ</a>
+                <a href="resources.html" class="direction south-label">Resources</a>
+                <a href="event.html" class="direction west-label">Events</a>
+                <a href="Tales.html" class="direction southwest-label">Tales</a>
+                <!-- Compass Element -->
+                <div class="compass">
+                    <img src="campass.png" alt="Compass">
+                </div>
+    </div>
+
+    <script>
+        function showCategory(categoryName) {
+            // Hide all categories
+            ['gear', 'navigation', 'safety'].forEach(cat => {
+                const category = document.getElementById(cat);
+                category.classList.add('hidden');
+            });
+            
+            // Show selected category
+            const selectedCategory = document.getElementById(categoryName);
+            selectedCategory.classList.remove('hidden');
+        }
+        // Theme Toggle Functionality
+const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+
+// Load and apply saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme'); // Retrieve saved theme
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme'); // Apply light theme
+    } else {
+        document.body.classList.add('dark-theme'); // Apply dark theme (default)
+    }
+});
+
+        // Toggle theme and save preference
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('light-theme')) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme'); // Switch to dark theme
+                localStorage.setItem('theme', 'dark'); // Save preference as dark
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme'); // Switch to light theme
+                localStorage.setItem('theme', 'light'); // Save preference as light
+            }
+        });
+                //JAVASCRIPT FOR THE LOADING ANIMATION
+    document.addEventListener('DOMContentLoaded', () => {
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const compassLinks = document.querySelectorAll('.direction');
+
+    function preventScrolling(e) {
+        e.preventDefault();
+    }
+
+    compassLinks.forEach(link => {
+        link.addEventListener('click', handleNavigation);
+        link.addEventListener('touchstart', handleNavigation);
+    });
+
+    function handleNavigation(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const link = e.currentTarget;
+        const targetUrl = link.getAttribute('href');
+        const destination = link.textContent;
+
+        document.body.addEventListener('touchmove', preventScrolling, { passive: false });
+
+        loadingOverlay.style.display = 'flex';
+        loadingOverlay.offsetWidth;
+        loadingOverlay.style.opacity = '1';
+
+        const loadingText = loadingOverlay.querySelector('.loading-text');
+        loadingText.textContent = `Exploring ${destination}...`;
+
+        setTimeout(() => {
+            document.body.removeEventListener('touchmove', preventScrolling);
+            window.location.href = targetUrl;
+        }, 1500);
+    }
+
+    window.addEventListener('pageshow', (event) => {
+        loadingOverlay.style.display = 'none';
+        loadingOverlay.style.opacity = '0';
+        document.body.removeEventListener('touchmove', preventScrolling);
+    });
+
+    document.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+});
+    </script>
+</body>
+</html>

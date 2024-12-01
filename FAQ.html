@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiking in Islamabad: Trails, Tips & FAQs</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Shared Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+        }
+        body.light-theme {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+   
+        .theme-toggle-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 9999;
+            background-color: #4a1f5e;
+            color: white;
+            border: none;
+            padding: 5px 7.5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        body.light-theme .theme-toggle-btn {
+            background-color: #f4f4f4;
+            color: #4a1f5e;
+            border: 1px solid #4a1f5e;
+        }
+        body.light-theme  .page-title {
+                position: absolute;
+                margin-top: 150px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                background-color: rgba(245, 215, 46, 0.9);
+                padding: 20px 40px;
+                border-radius: 15px;
+                max-width: 80%;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+                z-index: 10;
+                border: 3px solid rgb(79, 10, 85);
+            }
+
+        
+    @media screen and (min-width: 1440px) {
+                .container {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .background-image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(
+                    rgba(0, 0, 0, 0.3),
+                    rgba(0, 0, 0, 0.3)
+                ), 
+                url('bg1.png');
+                background-size: cover;
+                background-position: center;
+            }
+
+            .page-title {
+                position: absolute;
+                margin-top: 150px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                background-color: rgba(105, 26, 124, 0.9);
+                padding: 20px 40px;
+                border-radius: 15px;
+                max-width: 80%;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+                z-index: 10;
+                border: 3px solid gold;
+            }
+
+            .page-title h1 {
+                margin: 0;
+                font-size: 2.5rem;
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+            .page-title p {
+                margin: 10px 0 0;
+                font-size: 1.2rem;
+                color: #ffffff;
+            }
+
+            .board {
+                position: absolute;
+                background-color: rgba(155, 75, 0, 0.8);
+                border: 2px solid #3a2300;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: transform 0.3s, box-shadow 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px;
+                box-sizing: border-box;
+                box-shadow: 0 4px 10px rgba(207, 207, 207, 0.1);
+            }
+
+            .board-content {
+                color: #dbdbdb;
+                font-size: 0.8rem;
+                text-align: center;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: bold;
+            }
+
+            .board:hover {
+                transform: scale(1.1);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .board1 { top: 47%; width: 104px; height: 80px; left: 13%; }
+            .board2 { width: 120px; height: 82px; top: 78%; left: 26%; }
+            .board3 { width: 200px; height: 60px; top: 72%; left: 36%; }
+            .board4 { top: 63%; width: 126px; height: 80px; left: 76%; }
+            .board5 { top: 75%; width: 160px; height: 100px; left: 86%; }
+            .board6 { top: 72%; width: 240px; height: 200px; left: 4%; background-color: rgba(90, 51, 0, 0.9); }
+
+            /* Mobile styles hidden */
+            .mobile-content {
+                display: none;
+                margin-top: 150px;
+            }
+}
+        
+        /* Desktop Layout Styles */
+        @media screen and (max-width: 1500px) {
+            .container {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .background-image {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                background-image: linear-gradient(
+                    rgba(0, 0, 0, 0.3),
+                    rgba(0, 0, 0, 0.3)
+                ), 
+                url('bg1.png');
+                background-size: cover;
+                background-position: center;
+            }
+
+            .page-title {
+                position: absolute;
+                margin-top: 150px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                background-color: rgba(105, 26, 124, 0.9);
+                padding: 20px 40px;
+                border-radius: 15px;
+                max-width: 80%;
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+                z-index: 10;
+                border: 3px solid gold;
+            }
+
+            .page-title h1 {
+                margin: 0;
+                font-size: 2.5rem;
+                color: #ffffff;
+                font-weight: bold;
+            }
+
+            .page-title p {
+                margin: 10px 0 0;
+                font-size: 1.2rem;
+                color: #ffffff;
+            }
+
+            .board {
+                position: absolute;
+                background-color: rgba(155, 75, 0, 0.8);
+                border: 2px solid #3a2300;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: transform 0.3s, box-shadow 0.3s;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px;
+                box-sizing: border-box;
+                box-shadow: 0 4px 10px rgba(207, 207, 207, 0.1);
+            }
+
+            .board-content {
+                color: #dbdbdb;
+                font-size: 0.8rem;
+                text-align: center;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-weight: bold;
+            }
+
+            .board:hover {
+                transform: scale(1.1);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            .board1 { top: 47%; width: 54px; height: 30px; left: 13%; }
+            .board2 { width: 72px; height: 44px; top: 78%; left: 26%; }
+            .board3 { width: 100px; height: 38px; top: 72%; left: 36%; }
+            .board4 { top: 63%; width: 65px; height: 40px; left: 76%; }
+            .board5 { top: 75%; width: 80px; height: 50px; left: 86%; }
+            .board6 { top: 77%; width: 140px; height: 100px; left: 4%; background-color: rgba(90, 51, 0, 0.9); }
+
+            /* Mobile styles hidden */
+            .mobile-content {
+                display: none;
+                margin-top: 150px;
+            }
+        }
+
+        /* Mobile Layout Styles */
+        @media screen and (max-width: 768px) {
+            .desktop-content {
+                display: none;
+            }
+
+            .mobile-content {
+                display: block;
+            }
+
+            header {
+                position: relative;
+                background-image: url('bg1.png');
+                background-size: cover;
+                background-position: center;
+                color: white;
+                padding: 100px 20px;
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+                z-index: 1;
+            }
+
+            header h1 {
+                position: relative;
+                font-size: 3rem;
+                margin: 0;
+                z-index: 2;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            }
+
+            header p {
+                position: relative;
+                font-size: 1.2rem;
+                margin-top: 10px;
+                z-index: 2;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            }
+
+            .safety-tips, .faqs {
+                padding: 20px;
+                max-width: 800px;
+                margin: 20px auto;
+            }
+
+            .safety-tips {
+                background-color: #f9f9f9;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .safety-tips h2 {
+                margin-top: 0;
+                color: #28a745;
+            }
+
+            .safety-tips ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .safety-tips li {
+                display: flex;
+                align-items: center;
+                margin: 10px 0;
+            }
+            
+            .faqs {
+                background-color: #925f00;
+                border-radius: 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .faqs h2 {
+                color: #007bff;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .faq {
+                margin-bottom: 15px;
+            }
+
+            .question {
+                background-color: #e2f3f5;
+                padding: 15px;
+                border: 1px solid #ddd;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: bold;
+                color: #333;
+                transition: background-color 0.3s ease;
+            }
+
+            .question:hover {
+                background-color: #cfe2f3;
+            }
+
+            .answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+                padding: 0 10px;
+                border: 1px solid #ddd;
+                border-top: none;
+                background-color: #f9f9f9;
+                color: #555;
+            }
+
+            .answer.open {
+                max-height: 200px;
+                padding: 10px 10px;
+            }
+        }
+
+        /* Shared Styles */
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: #ffbb00;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #b900b9;
+            transform: scale(1.05);
+        }
+
+        .bonus-tips {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #660c79;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        /* Desktop FAQ Container Styles */
+        .faq-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px 0;
+        }
+
+        .faq-content {
+            background-color: rgb(62, 19, 82);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 12px 30px rgba(255, 189, 6, 0.3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .faq-content h3 {
+            color: #f5f5f5;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .faq-content p {
+            color: #eeeeee;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .faq-item {
+            display: none;
+        }
+
+        .faq-item.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-compass">
+      <img src="campass.png" alt="Navigation Compass">
+  </div>
+  <div class="loading-text">Navigating to your destination...</div>
+</div>
+
+<button class="theme-toggle-btn">🌓 Toggle Theme</button>
+    <!-- Desktop Content -->
+    <div class="desktop-content">
+        <div class="container">
+            <div class="page-title">
+                <h1>Hiking (FAQs and Tips) </h1>
+                <p>Click on any board to reveal the answers!</p>
+            </div>
+            <div class="background-image">
+              <div class="border-container"></div>
+                <div class="board board1" data-faq-id="1">
+                    <div class="board-content">Best Trails</div>
+                </div>
+                <div class="board board2" data-faq-id="2">
+                    <div class="board-content">Weather Info</div>
+                </div>
+                <div class="board board3" data-faq-id="3">
+                    <div class="board-content">Landmarks</div>
+                </div>
+                <div class="board board4" data-faq-id="4">
+                    <div class="board-content">Packing List</div>
+                </div>
+                <div class="board board5" data-faq-id="5">
+                    <div class="board-content">Safety Tips</div>
+                </div>
+                <div class="board board6" data-faq-id="6">
+                    <div class="board-content">Detailed Safety Guidelines</div>
+                </div>
+
+ 
+                <div class = "logo-container" ></div>
+                       <!--Compass-->
+                       <div class="compass-container">
+                        <a href="main.html" class="direction north-label">Home</a>
+                        <a href="trails.html" class="direction east-label">Trails</a>
+                        <a href="FAQ.html" class="direction southeast-label">FAQ</a>
+                        <a href="resources.html" class="direction south-label">Resources</a>
+                        <a href="event.html" class="direction west-label">Events</a>
+                        <a href="Tales.html" class="direction southwest-label">Tales</a>
+                        <!-- Compass Element -->
+                        <div class="compass">
+                            <img src="campass.png" alt="Compass">
+                        </div>
+            </div>
+            <div class="faq-container">
+                <div class="faq-content">
+                    <div class="faq-item" id="faq1">
+                        <h3>What are the best hiking trails in Islamabad?</h3>
+                        <p>Some of the top hiking trails in Islamabad include the Monal Trail, Dhoke Gujran Trail, and Pir Sohawa Trail. These offer scenic views of the city and the surrounding hills.</p>
+                    </div>
+                    <div class="faq-item" id="faq2">
+                        <h3>What is the weather like for hiking in Islamabad?</h3>
+                        <p>Islamabad enjoys a moderate climate, with mild summers and cool winters. The best time for hiking is during the spring and fall months when the weather is pleasant and comfortable.</p>
+                    </div>
+                    <div class="faq-item" id="faq3">
+                        <h3>Are there any famous landmarks or viewpoints along the hiking trails?</h3>
+                        <p>Yes, many of the hiking trails in Islamabad offer stunning views of landmarks like the Faisal Mosque, the Monal Restaurant, and the Daman-e-Koh viewpoint.</p>
+                    </div>
+                    <div class="faq-item" id="faq4">
+                        <h3>What should I pack for a hike in Islamabad?</h3>
+                        <p>Some essential items to pack for a hike in Islamabad include comfortable hiking shoes, a lightweight backpack, water, snacks, sunscreen, a hat, and a light jacket or sweater.</p>
+                    </div>
+                    <div class="faq-item" id="faq5">
+                        <h3>Are there any safety precautions I should take while hiking in Islamabad?</h3>
+                        <p>It's important to stay on marked trails, be aware of your surroundings, and let someone know your hiking plans. Bring a charged phone and be prepared for changing weather conditions.</p>
+                    </div>
+                    <div class="faq-item" id="faq6">
+                        <div class="safety-tips">
+                            <h3>Essential Hiking Safety Tips</h3>
+                            <ul>
+                                <li> Pack a sturdy backpack with essentials</li>
+                                <li> Stay hydrated by bringing plenty of water</li>
+                                <li> Check the weather forecast before you go</li>
+                                <li> Carry a first aid kit for emergencies</li>
+                                <li> Wear comfortable hiking boots</li>
+                            </ul>
+                            <button onclick="toggleBonusTips()">Bonus Safety Tips</button>
+                            <div class="bonus-tips">
+                                <p><i class="fas fa-info-circle icon"></i> Inform someone about your hiking plans and return time.</p>
+                                <p><i class="fas fa-map-marked-alt icon"></i> Keep a whistle or GPS device for emergencies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-content">
+      <header>
+          <div class="overlay"></div>
+          <h1>Hiking Safety & FAQs</h1>
+          <p>Plan your adventure with essential safety tips and answers to common questions about Islamabad's trails.</p>
+      </header>
+
+      <section class="safety-tips">
+          <h2>Essential Hiking Safety Tips</h2>
+          <ul>
+              <li> Pack a sturdy backpack with essentials</li>
+              <li> Stay hydrated by bringing plenty of water</li>
+              <li> Check the weather forecast before you go</li>
+              <li> Carry a first aid kit for emergencies</li>
+              <li> Wear comfortable hiking boots</li>
+          </ul>
+          <button onclick="toggleBonusTips()">Bonus Safety Tips</button>
+          <div class="bonus-tips">
+              <p>- Inform someone about your hiking plans and return time.</p>
+              <p>- Keep a whistle or GPS device for emergencies.</p>
+          </div>
+      </section>
+
+      <section class="faqs">
+          <h2>FAQs About Hiking Trails in Islamabad</h2>
+          <div class="faq">
+              <div class="question">What are the most popular trails in Islamabad?</div>
+              <div class="answer">Some of the most popular trails in Islamabad are Trail 3, Trail 5, and the Margalla Hills Trail. 
+              - Trail 3: This is a moderate trail that provides an excellent mix of challenging uphill sections and scenic views of the city.
+              - Trail 5: Known for its beautiful forested path and less strenuous climb.
+              - The Margalla Hills Trail: Offers stunning views of Islamabad and the surrounding hills.</div>
+          </div>
+          <div class="faq">
+              <div class="question">Are the trails suitable for beginners?</div>
+              <div class="answer">Yes, many trails are beginner-friendly:
+              - Trail 5 is often recommended for beginners with a moderate incline.
+              - Trail 3 is accessible but may be challenging for some.
+              Some trails like Trail 2 are more suited to intermediate or experienced hikers.</div>
+          </div>
+          <div class="faq">
+              <div class="question">What is the best time to go hiking in Islamabad?</div>
+              <div class="answer">The best times are:
+              - Early Morning: Cooler temperatures and tranquil trails.
+              - Late Afternoon: Especially during cooler months, perfect after work.</div>
+          </div>
+          <div class="faq">
+              <div class="question">Are there any facilities like restrooms or food stalls?</div>
+              <div class="answer">Facility availability varies:
+              - Trailheads: Many have basic facilities like public restrooms and small food stalls.
+              - Remote Trails: Limited or no amenities, so be self-sufficient.</div>
+          </div>
+          <div class="faq">
+              <div class="question">Do I need a permit to hike on the trails?</div>
+              <div class="answer">Most trails do not require permits:
+              - Rawal Lake Trail: Requires a small entrance fee.
+              - Group Hikes: May need a permit from local authorities.</div>
+          </div>
+      </section>
+  </div>
+
+  <script>
+      function toggleBonusTips() {
+          var bonusTips = document.querySelectorAll('.bonus-tips');
+          bonusTips.forEach(tips=> {
+          tips.style.display = tips.style.display === 'block' ? 'none' : 'block';
+          });
+        }
+
+      // Desktop FAQ Toggle Logic
+      const boards = document.querySelectorAll('.board');
+      const faqContainer = document.querySelector('.faq-container');
+      const faqItems = document.querySelectorAll('.faq-item');
+      const faqContent = document.querySelector('.faq-content');
+
+      boards.forEach(board => {
+          board.addEventListener('click', (event) => {
+              event.stopPropagation();
+              const faqId = board.dataset.faqId;
+              const targetFaq = document.getElementById(`faq${faqId}`);
+
+              faqItems.forEach(item => item.classList.remove('active'));
+              targetFaq.classList.add('active');
+              faqContainer.style.display = 'flex';
+              
+              setTimeout(() => {
+                  faqContainer.style.opacity = '1';
+              }, 10);
+          });
+      });
+
+      // Close FAQ when clicking anywhere on the screen
+      document.addEventListener('click', (event) => {
+          if (faqContainer.style.display === 'flex') {
+              if (!faqContent.contains(event.target)) {
+                  faqContainer.style.opacity = '0';
+                  setTimeout(() => {
+                      faqContainer.style.display = 'none';
+                  }, 300);
+              }
+          }
+      });
+
+      // Prevent clicks inside the FAQ content from closing the container
+      faqContent.addEventListener('click', (event) => {
+          event.stopPropagation();
+      });
+
+      // Mobile FAQ Toggle Logic
+      const mobileFaqs = document.querySelectorAll('.mobile-content .faq');
+      mobileFaqs.forEach(faq => {
+          const question = faq.querySelector('.question');
+          const answer = faq.querySelector('.answer');
+          question.addEventListener('click', () => {
+              answer.classList.toggle('open');
+          });
+      });
+      // Theme Toggle Functionality
+const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+
+// Load and apply saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme'); // Retrieve saved theme
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme'); // Apply light theme
+    } else {
+        document.body.classList.add('dark-theme'); // Apply dark theme (default)
+    }
+});
+
+        // Toggle theme and save preference
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('light-theme')) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme'); // Switch to dark theme
+                localStorage.setItem('theme', 'dark'); // Save preference as dark
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme'); // Switch to light theme
+                localStorage.setItem('theme', 'light'); // Save preference as light
+            }
+        });
+    
+              //JAVASCRIPT FOR THE LOADING ANIMATION
+    document.addEventListener('DOMContentLoaded', () => {
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const compassLinks = document.querySelectorAll('.direction');
+
+    function preventScrolling(e) {
+        e.preventDefault();
+    }
+
+    compassLinks.forEach(link => {
+        link.addEventListener('click', handleNavigation);
+        link.addEventListener('touchstart', handleNavigation);
+    });
+
+    function handleNavigation(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const link = e.currentTarget;
+        const targetUrl = link.getAttribute('href');
+        const destination = link.textContent;
+
+        document.body.addEventListener('touchmove', preventScrolling, { passive: false });
+
+        loadingOverlay.style.display = 'flex';
+        loadingOverlay.offsetWidth;
+        loadingOverlay.style.opacity = '1';
+
+        const loadingText = loadingOverlay.querySelector('.loading-text');
+        loadingText.textContent = `Exploring ${destination}...`;
+
+        setTimeout(() => {
+            document.body.removeEventListener('touchmove', preventScrolling);
+            window.location.href = targetUrl;
+        }, 1500);
+    }
+
+    window.addEventListener('pageshow', (event) => {
+        loadingOverlay.style.display = 'none';
+        loadingOverlay.style.opacity = '0';
+        document.body.removeEventListener('touchmove', preventScrolling);
+    });
+
+    document.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+});
+  </script>
+</body>
+</html>

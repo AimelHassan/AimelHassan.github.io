@@ -1,0 +1,603 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap');
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48, 25, 90, 0.95);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    color: #e0e0e0;
+    text-align: center;
+    font-family: 'Cabin', sans-serif;
+    touch-action: none;
+    overscroll-behavior: contain;
+}
+
+.loading-compass {
+    width: 200px;
+    height: 200px;
+    max-width: 80vw;
+    max-height: 80vw;
+    position: relative;
+    animation: compass-spin 2s linear infinite;
+}
+
+.loading-compass img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.loading-text {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 20px;
+}
+
+@keyframes compass-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width: 375px) {
+    .loading-compass {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .loading-text {
+        font-size: 1em;
+    }
+}
+
+
+
+.border-container {
+    position: fixed;
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    border: 2px solid rgb(255, 254, 254);
+    box-sizing: border-box;
+    z-index: 0;
+    pointer-events: none;
+}
+.name-container {
+    position: fixed;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-color: transparent;
+    width: 500px;
+    height: 100px;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+.logo-container {
+    position: fixed;
+    background-image: url("logo.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    top: 40px;
+    left: 17%;
+    transform: translateX(-50%);
+    transition: height 0.3s ease;
+    transition: width 0.3s ease;
+    border-radius: 100%;
+}
+.button1-container {
+    position: fixed;
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    top: 41%;
+    left: 8.3%;
+    transform: translateX(-50%);
+    border-radius: 50%; 
+    border: none; 
+
+    transition: width 0.3s ease, height 0.3s ease; 
+}
+.button1-container img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: inherit; 
+    display: block; 
+}
+
+    /* Hidden box styling */
+    .hidden-box {
+        width: 150px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 50px;
+        border: 2px solid rgb(255, 254, 254);
+        font-size: 14px;
+        color: #ffffff;
+        position: absolute;
+        top: 28%;
+        left: 13%; /* Adjust to align with the end of the angled line */
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+  
+      /* Line styling: Horizontal segment (::after) */
+      .button1-container::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        width: 0;
+        height: 2px;
+        background-color: #dbdfe2;
+        transform: translateY(-50%);
+        transition: width 0.3s ease;
+      }
+  
+      /* Line styling: Angled segment (::before) */
+      .button1-container::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 98px); /* Position after the horizontal line */
+        width: 2px;
+        height: 0;
+        background-color: #dbdfe2;
+        transform-origin: top;
+        transform: rotate(215deg);
+        transition: height 0.3s ease;
+      }
+  
+      /* Hover effects */
+      .button1-container:hover::after {
+        width: 100px; /* Extend the horizontal segment */
+      }
+  
+      .button1-container:hover::before {
+        height: 45px; 
+      }
+  
+      .button1-container:hover + .hidden-box {
+        opacity: 1;
+        transform: scale(1);
+        transition-delay: 0.5; 
+      }
+
+
+
+
+
+
+
+      .button2-container {
+        position: fixed;
+        background-color: transparent;
+        width: 20px;
+        height: 20px;
+        top: 85%;
+        left: 35%;
+        transform: translateX(-50%);
+        border-radius: 50%; 
+        border: none; 
+    
+        transition: width 0.3s ease, height 0.3s ease; /* Transition effects */
+    }
+    .button2-container img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        border-radius: inherit; 
+        display: block; 
+    }
+    
+        /* Hidden box styling */
+        .hidden2 {
+            width: 150px;
+            height: 50px;
+            background-color: transparent;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 50px;
+            border: 3px solid rgb(255, 254, 254);
+            font-size: 14px;
+            color: #ffffff;
+            position: absolute;
+            top: 73.5%;
+            left: 19%; 
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+          }
+      
+          /* Line styling: Horizontal segment (::after) */
+          .button2-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            width: 0;
+            height: 2px;
+            background-color: #dbdfe2;
+            transform: translateY(-50%);
+            transition: width 0.3s ease;
+          }
+    
+          .button2-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: calc(100% + 98px); 
+            width: 2px;
+            height: 0;
+            background-color: #dbdfe2;
+            transform-origin: top;
+            transform: rotate(135deg);
+            transition: height 0.3s ease;
+          }
+      
+          /* Hover effects */
+          .button2-container:hover::after {
+            width: 100px; 
+          }
+      
+          .button2-container:hover::before {
+            height: 45px; 
+          }
+      
+          .button2-container:hover + .hidden2 {
+            opacity: 1;
+            transform: scale(1);
+            transition-delay: 0.5; 
+          }
+    
+.footer {
+    position: fixed;
+    bottom: 3px; 
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+.compass-container {
+    position: fixed;
+    width: 150px;
+    height: 150px;
+    top: 43px;
+    right: 68px;
+    transition: width 0.3s ease, height 0.3s ease;
+    z-index: 99;
+}
+.compass {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease-in-out;
+}
+
+.compass img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.direction {
+    position: absolute;
+    text-align: center;
+    color: rgb(254, 254, 254);
+    font-size: 14px;
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    width: 25px;
+    height: 25px;
+    line-height: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.direction:hover {
+    background: linear-gradient(135deg, #ff6347, #ff0000);
+}
+
+.north-label {
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.east-label {
+    right: -23px;
+    top: 13%;
+    transform: translateY(-50%);
+}
+
+.south-label {
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.west-label {
+    left: -23px;
+    top: 13%;
+    transform: translateY(-50%);
+}
+.southwest-label {
+    left: -20px;
+    top: 92%;
+    transform: translateY(-50%);
+}
+
+.southeast-label {
+    right: -27px;
+    top: 90%;
+    transform: translateY(-50%);
+}
+/* Compass rotation on hover */
+.north-label:hover ~ .compass {
+    transform: rotate(0deg);
+}
+
+.east-label:hover ~ .compass {
+    transform: rotate(45deg);
+}
+
+.south-label:hover ~ .compass {
+    transform: rotate(180deg);
+}
+
+.west-label:hover ~ .compass {
+    transform: rotate(-45deg);
+}
+
+.southwest-label:hover ~ .compass {
+    transform: rotate(-135deg);
+}
+
+.southeast-label:hover ~ .compass {
+    transform: rotate(135deg);
+}
+
+/* Large screens */
+@media screen and (min-width: 1440px) {
+
+    
+    .name-container {
+        width: 80%;
+        max-width: 1200px;
+    }
+    .logo-container {
+        width: 300px;
+        height: 300px;
+    }
+    .compass-container {
+        width: 200px;
+        height: 200px;
+    }
+    .direction {
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .north-label {
+        top: -35px;
+    }
+
+    .east-label {
+        right: -33px;
+        top: 20%;
+    }
+
+    .south-label {
+        bottom: -35px;
+    }
+
+    .west-label {
+        left: -33px;
+        top: 20%;
+    }
+
+    .southwest-label {
+        left: -30px;
+        top: 90%;
+    }
+
+    .southeast-label {
+        right: -37px;
+        top: 88%;
+    }
+
+}
+
+/* Tablet (768px - 1023px) */
+@media screen and (max-width: 1023px) {
+    .name-container {
+        width: 70%;
+        max-width: 400px;
+    }
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+    .compass-container {
+        width: 120px;
+        height: 120px;
+        top: 45px;
+        right: 65px;
+    }
+    .direction {
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .north-label {
+        top: -20px;
+    }
+
+    .east-label {
+        right: -23px;
+        top: 15%;
+    }
+
+    .south-label {
+        bottom: -25px;
+    }
+
+    .west-label {
+        left: -23px;
+        top: 15%;
+    }
+
+    .southwest-label {
+        left: -20px;
+        top: 92%;
+    }
+
+    .southeast-label {
+        right: -25px;
+        top: 90%;
+    }
+}
+
+/* Mobile (320px - 767px) */
+@media screen and (max-width: 767px) {
+    .name-container {
+        width: 90%;
+        max-width:300px;
+        height: 80px;
+        left:34%;
+    }
+    .logo-container {
+        width: 200px;
+        height: 200px;
+        left: 50%;
+        top: 15%;
+        z-index: 105;
+      
+    }
+    .compass-container {
+        width: 80px;
+        height: 80px;
+        top: 40px;
+        right: 60px;
+    }
+    .direction {
+        font-size: 10px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .north-label {
+        top: -20px;
+    }
+
+    .east-label {
+        right: -18px;
+        top: 10%;
+    }
+
+    .south-label {
+        bottom: -20px;
+    }
+
+    .west-label {
+        left: -18px;
+        top: 10%;
+    }
+
+    .southwest-label {
+        left: -15px;
+        top: 93%;
+    }
+
+    .southeast-label {
+        right: -22px;
+        top: 91%;
+    }
+}
+
+/* Small Mobile (320px and below) */
+@media screen and (max-width: 320px) {
+    .name-container {
+        width: 95%;
+        max-width: 300px;
+        height: 60px;
+    }
+    .logo-container {
+        width: 0px;;
+
+    }
+    .compass-container {
+        width: 60px;
+        height: 60px;
+        top: 5px;
+        right: 5px;
+    }
+    .direction {
+        font-size: 8px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .north-label {
+        top: -15px;
+    }
+
+    .east-label {
+        right: -15px;
+        top: 5%;
+    }
+
+    .south-label {
+        bottom: -15px;
+    }
+
+    .west-label {
+        left: -15px;
+        top: 5%;
+    }
+
+    .southwest-label {
+        left: -12px;
+        top: 94%;
+    }
+
+    .southeast-label {
+        right: -18px;
+        top: 92%;
+    }
+}

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trails</title>
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            position: relative;
+            overflow: hidden;
+            background-image: url('BG.png');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+        }
+                /* Light Theme Styles */
+                body.light-theme {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        body.light-theme .title-wrapper .slide-title{
+            font-family: 'Arial Black', Gadget, sans-serif;
+             font-size: 30px;
+             color: #181818; 
+            white-space: nowrap;
+        }
+       body.light-theme .slider {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            height: 555px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(30, 30, 30, 0.2);
+            background-color: #fbeefa;
+        }
+
+        body.light-theme .review-slider {
+            position: relative;
+            padding: 15px;
+            background-color: #f7cbf2;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 -2px 5px rgba(4, 4, 4, 0.1);
+            overflow: hidden;
+            max-height: 180px;
+            text-align: center;
+        }
+
+        .theme-toggle-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 9999;
+            background-color: #4a1f5e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        body.light-theme .theme-toggle-btn {
+            background-color: #f4f4f4;
+            color: #4a1f5e;
+            border: 1px solid #4a1f5e;
+        }
+        .border-container {
+           position: fixed;
+           top: 20px;
+           bottom: 20px;
+           left: 20px;
+           right: 20px;
+           border: 3px solid rgb(255, 244, 244);
+           box-sizing: border-box;
+        }
+
+
+        .footer {
+           position: fixed;
+           bottom: 3px; 
+           left: 0;
+           right: 0;
+           text-align: center;
+           font-size: 12px;
+           font-weight: bold;
+           color: #f1f1f1;
+        }
+        .title-wrapper .slide-title{
+            font-family: 'Arial Black', Gadget, sans-serif;
+             font-size: 30px;
+             color: #ffffff; 
+            white-space: nowrap;
+        }
+        .slider {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            height: 555px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+            background-color: #ae64a7;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            width: 100%;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            height: 400px;
+        }
+
+        .image-wrapper {
+            width: 45%;
+            height: 100%;
+            margin: 0 10px;
+        }
+        
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .review-slider {
+            position: relative;
+            padding: 15px;
+            background-color: #ae64a7;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 -2px 5px rgba(4, 4, 4, 0.1);
+            overflow: hidden;
+            max-height: 180px;
+            text-align: center;
+        }
+
+        .review-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .review-slide {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .review {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            margin: 0 10px;
+            max-height: 100px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #ccc transparent;
+        }
+
+        .review::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .review::-webkit-scrollbar-thumb {
+            background-color: #aaa;
+            border-radius: 3px;
+        }
+
+        .review .name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .review .rating {
+            color: #f39c12;
+        }
+
+        .review .text {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+            text-align: left;
+        }
+
+        .review-slider .prev, .review-slider .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0.7;
+        }
+
+        .review-slider .prev:hover, .review-slider .next:hover {
+            opacity: 1;
+        }
+
+        .review-slider .prev {
+            left: 10px;
+        }
+
+        .review-slider .next {
+            right: 10px;
+        }
+
+        .bar-navigation {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            top: 98.5%;
+        }
+
+        .bar {
+            width: 30px;
+            height: 5px;
+            background-color: #000;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .bar.active {
+            background-color: #7e1d7d;
+        }
+        @media screen and (min-width: 1440px) {
+            .slider {
+    position: relative;
+    max-width: 1000px;
+    width: 100%;
+    height: 700px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+    background-color: #ae64a7;
+}
+.image-container {
+    display: flex
+;
+    justify-content: center;
+    padding: 10px;
+    height: 500px;
+}
+        }
+
+        /* Media Queries for Responsiveness */
+        @media screen and (max-width: 1024px) {
+            .slider {
+                height: 600px;
+                margin: 10px auto;
+            }
+
+            .image-container {
+                height: 400px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .slider {
+                height: 500px;
+                top:70%;
+            }
+
+            .image-container {
+                height: 300px;
+                padding: 10px;
+            }
+
+            .image-wrapper {
+                width: 42%;
+                margin: 0 5px;
+            }
+
+            .review {
+                margin: 0 5px;
+            }
+
+            .review .name {
+                font-size: 14px;
+            }
+
+            .review .text {
+                font-size: 12px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .slider {
+                height: 450px;
+                margin: 5px auto;
+                margin-top: 50%;
+                width: 370px;
+            }
+
+            .image-container {
+                height: 250px;
+                padding: 5px;
+            }
+
+            .image-wrapper {
+                width: 40%;
+                margin: 0 3px;
+            }
+
+            .title-wrapper h2 {
+                font-size: 24px !important;
+            }
+
+            .review-slider {
+                max-height: 150px;
+            }
+
+            .review {
+                padding: 8px;
+                margin: 0 3px;
+                max-height: 120px;
+            }
+
+            .bar {
+                width: 20px;
+                height: 4px;
+            }
+
+            .bar-navigation {
+                gap: 5px;
+            }
+
+            .review-slider .prev,
+            .review-slider .next {
+                width: 25px;
+                height: 25px;
+            }
+            
+        }
+
+        @media screen and (max-width: 360px) {
+            .slider {
+                height: 400px;
+            }
+
+            .image-container {
+                height: 200px;
+            }
+
+            .title-wrapper h2 {
+                font-size: 20px !important;
+            }
+
+            .review-slider {
+                max-height: 130px;
+            }
+
+            .review {
+                max-height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-compass">
+        <img src="campass.png" alt="Navigation Compass">
+    </div>
+    <div class="loading-text">Navigating to your destination...</div>
+</div>
+    <button class="theme-toggle-btn">🌓 Toggle Theme</button>
+    <div class="border-container"></div>
+    <div class = "logo-container" ></div>
+           <!--Compass-->
+           <div class="compass-container">
+            <a href="main.html" class="direction north-label">Home</a>
+            <a href="trails.html" class="direction east-label">Trails</a>
+            <a href="FAQ.html" class="direction southeast-label">FAQ</a>
+            <a href="resources.html" class="direction south-label">Resources</a>
+            <a href="event.html" class="direction west-label">Events</a>
+            <a href="Tales.html" class="direction southwest-label">Tales</a>
+            <!-- Compass Element -->
+            <div class="compass">
+                <img src="campass.png" alt="Compass">
+            </div>
+        </div>
+    <div class="slider">
+        <div class="slides">
+            <!-- Slide 1 -->
+            <div class="slide">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="images/1.jpg" alt="Image 1">
+                    </div>
+                    <div class="title-wrapper" style="display: flex; align-items: center; justify-content: center; width: 10%;">
+                        <h2 class="slide-title" >
+                            T<br> R<br> A<br> I<br> L<br><br> 4
+                        </h2> 
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/trail4.webp" alt="Image 2">
+                    </div>
+                </div>
+                <div class="review-slider">
+                    <div class="review-slides">
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Hamna Majeed <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Fun trail with great views and elevation. You can take the regular trail or fire line path that cuts through the trail, but it’s really steep, rocky, harder, and faster, of course. 
+                                    Be careful while coming down on this path, as it’s steep and has loose rocks. 
+                                    The best part is that you can motivate and reward yourself with some great food at Monal when you reach the top! <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Hamza Ali <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Hiking trail with views, a stream at the top as well, i will recommend taking water for drinking. Rocky so need good hiking shoes.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev" onclick="moveReview(-1)">&#10094;</button>
+                    <button class="next" onclick="moveReview(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="images/2.jpg" alt="Image 3">
+                    </div>
+                    <div class="title-wrapper" style="display: flex; align-items: center; justify-content: center; width: 10%;">
+                        <h2 class="slide-title" >
+                            T<br> R<br> A<br> I<br> L<br><br> 5
+                        </h2> 
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/trail5.webp" alt="Image 4">
+                    </div>
+                </div>
+                <div class="review-slider">
+                    <div class="review-slides">
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Muhammad Ammar <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Trail 5: A Must-Visit Gem in Islamabad! Trail 5 in Islamabad is an absolute delight for nature enthusiasts and adventure seekers alike. This trail offers a perfect escape from the hustle and bustle of city life.
+                                    From the moment you step onto the trail, you're surrounded by lush greenery, chirping birds, and the soothing sound of rustling leaves. The hike itself is moderately challenging, making it ideal for both beginners and seasoned trekkers. 
+                                    The well-maintained path ensures a safe journey, while the breathtaking views of Islamabad from the top make every step worth it. What sets Trail 5 apart is its serenity. Even on busy days, it retains a peaceful atmosphere that refreshes your mind and soul.
+                                    <br>Difficulty: Moderate</div>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Ayan Ahmed <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">4.7 km hike when going to the top. First 1.8 Kms is easy. Next 2 Kms are constant climb and last few hundred meters are just flat. Took 1 hr 19 minutes to reach the top. 
+                                    On the way back I took the other route which was 4 km in distance and took about 42 mins to reach back to the starting point.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev" onclick="moveReview(-1)">&#10094;</button>
+                    <button class="next" onclick="moveReview(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="images/3.jpg" alt="Image 5">
+                    </div>
+                    <div class="title-wrapper" style="display: flex; align-items: center; justify-content: center; width: 10%;">
+                        <h2 class="slide-title" >
+                            T<br> R<br> I<br> A<br> L<br><br> 3
+                        </h2> 
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/trail3.webp" alt="Image 6">
+                    </div>
+                </div>
+                <div class="review-slider">
+                    <div class="review-slides">
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Afnan Ali <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Fun trail with great views and elevation. You can take the regular trail or fire line path that cuts through the trail, but it’s really steep, rocky, harder, and faster, of course. 
+                                    Be careful while coming down on this path, as it’s steep and has loose rocks. The best part is that you can motivate and reward yourself with some great food at Monal when you reach the top!</div>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Abdul Razzaq <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Love this trail. Its very clean especially with the trash cans in place. I went all the way up to Monal and back. Trail is fairly well shaded for around 60% of the trail.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev" onclick="moveReview(-1)">&#10094;</button>
+                    <button class="next" onclick="moveReview(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="images/4.jpg" alt="Image 7">
+                    </div>
+                    <div class="title-wrapper" style="display: flex; align-items: center; justify-content: center; width: 10%;">
+                        <h2 class="slide-title" >
+                            T<br> R<br> I<br> A<br> L<br><br> 7
+                        </h2> 
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/trail7.jpg" alt="Image 8">
+                    </div>
+                </div>
+                <div class="review-slider">
+                    <div class="review-slides">
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Arsalan Abbas <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Excellent hike. We spent approximately 1h 45 min to the restaurant at Manal, last bit was alongside a road that wasn't too pedestrian friendly (15 min), but rest of the hike was greate. 
+                                    For those who's done a bit of hiking before, this was not a very hard hike, a bit steep at times, but no climbing. Fantastic views of both the mountains and the city below. Advice to go late afternoons in the warm season.</div>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Humayun  <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">A good hike with some challenges. I will strongly recommend to hike it together with friends or with a professional travel guide together. Don't do it solo since it is quite steep and rocky and some parts actually are quite challenging.
+                                    I went there for just experiencing nature, not really a hiker. I was so lucky to have a local to serve as the guide and company. I still feel challenges and several times I stepped on the rolling stones and slid. Fortunately, I was not hurt.
+                                    I will also recommend to bring your walking poles if you have. Hike slowly and pay attend to the road situation.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev" onclick="moveReview(-1)">&#10094;</button>
+                    <button class="next" onclick="moveReview(1)">&#10095;</button>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="slide">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <img src="images/5.jpg" alt="Image 9">
+                    </div>
+                    <div class="title-wrapper" style="display: flex; align-items: center; justify-content: center; width: 10%;">
+                        <h2 class="slide-title">
+                            T<br> R<br> I<br> A<br> L<br><br> 2
+                        </h2> 
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/trail2.jpg" alt="Image 10">
+                    </div>
+                </div>
+                <div class="review-slider">
+                    <div class="review-slides">
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Ali Ahmad <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">Very scenic trail with stream running along. Gradual incline so family with children would equally enjoy. Resting places on the way. 
+                                    A fresh water spring after 3 kms. Enjoy berry trees in summer season. Bring your water bottles.</div>
+                            </div>
+                        </div>
+                        <div class="review-slide">
+                            <div class="review">
+                                <div class="name">Haris Ali <span class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></div>
+                                <div class="text">this is a long trail would help for people who want to lose weight, not recommended for kids as they will get tired. 
+                                    This trail is very rocky and dangerous too at one point I was about to fall. If you want to go there make sure your GPS works.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="prev" onclick="moveReview(-1)">&#10094;</button>
+                    <button class="next" onclick="moveReview(1)">&#10095;</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bar-navigation">
+            <div class="bar active" data-index="0"></div>
+            <div class="bar" data-index="1"></div>
+            <div class="bar" data-index="2"></div>
+            <div class="bar" data-index="3"></div>
+            <div class="bar" data-index="4"></div>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelector('.slides');
+        const bars = document.querySelectorAll('.bar');
+        const reviewSlides = document.querySelectorAll('.review-slides');
+
+        let currentReviewIndex = 0;
+        let currentSlideIndex = 0;
+
+        function updateSlider(index) {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            bars.forEach((bar, i) => bar.classList.toggle('active', i === index));
+            currentReviewIndex = 0;
+            updateReviews();
+        }
+
+        function moveReview(step) {
+            const activeReviews = reviewSlides[currentSlideIndex].children;
+            currentReviewIndex = (currentReviewIndex + step + activeReviews.length) % activeReviews.length;
+            updateReviews();
+        }
+
+        function updateReviews() {
+            reviewSlides[currentSlideIndex].style.transform = `translateX(-${currentReviewIndex * 100}%)`;
+        }
+
+        bars.forEach((bar, index) => {
+            bar.addEventListener('click', () => {
+                currentSlideIndex = index;
+                updateSlider(index);
+            });
+        });
+
+        updateSlider(0);
+// Theme Toggle Functionality
+const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+
+// Load and apply saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme'); // Retrieve saved theme
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme'); // Apply light theme
+    } else {
+        document.body.classList.add('dark-theme'); // Apply dark theme (default)
+    }
+});
+
+        // Toggle theme and save preference
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.body.classList.contains('light-theme')) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme'); // Switch to dark theme
+                localStorage.setItem('theme', 'dark'); // Save preference as dark
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme'); // Switch to light theme
+                localStorage.setItem('theme', 'light'); // Save preference as light
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const compassLinks = document.querySelectorAll('.direction');
+
+    function preventScrolling(e) {
+        e.preventDefault();
+    }
+
+    compassLinks.forEach(link => {
+        link.addEventListener('click', handleNavigation);
+        link.addEventListener('touchstart', handleNavigation);
+    });
+
+    function handleNavigation(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const link = e.currentTarget;
+        const targetUrl = link.getAttribute('href');
+        const destination = link.textContent;
+
+        document.body.addEventListener('touchmove', preventScrolling, { passive: false });
+
+        loadingOverlay.style.display = 'flex';
+        loadingOverlay.offsetWidth;
+        loadingOverlay.style.opacity = '1';
+
+        const loadingText = loadingOverlay.querySelector('.loading-text');
+        loadingText.textContent = `Exploring ${destination}...`;
+
+        setTimeout(() => {
+            document.body.removeEventListener('touchmove', preventScrolling);
+            window.location.href = targetUrl;
+        }, 1500);
+    }
+
+    window.addEventListener('pageshow', (event) => {
+        loadingOverlay.style.display = 'none';
+        loadingOverlay.style.opacity = '0';
+        document.body.removeEventListener('touchmove', preventScrolling);
+    });
+
+    document.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+});
+    </script>
+</body>
+</html>
