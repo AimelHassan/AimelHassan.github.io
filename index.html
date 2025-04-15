@@ -3,168 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Work In Progress</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        
-        .wip-banner {
-            background-color: #ff9800;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            margin-bottom: 40px;
-            text-align: center;
-            font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .content {
-            text-align: center;
-            max-width: 600px;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        
-        .coming-soon {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .section-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            width: 160px;
-            height: 160px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-        
-        .section-card:hover {
-            transform: translateY(-5px);
-            opacity: 1;
-        }
-        
-        .section-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #555;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 5px;
-            margin: 40px 0;
-            overflow: hidden;
-        }
-        
-        .progress {
-            width: 30%;
-            height: 100%;
-            background-color: #4CAF50;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
-        
-        .contact {
-            margin-top: 40px;
-            font-style: italic;
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .coming-soon {
-                gap: 15px;
-            }
-            
-            .section-card {
-                width: 130px;
-                height: 130px;
-            }
-        }
-    </style>
+    <title>Aimel Hassan - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Smooch+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 </head>
 <body>
-    <div class="container">
-        <div class="wip-banner">WORK IN PROGRESS</div>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">&lt;AH&gt;</div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">01. Home</a></li>
+                    <li><a href="#about">02. About</a></li>
+                    <li><a href="#projects">03. Projects</a></li>
+                    <li><a href="#contact">04. Contact me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="spotlight"></div>
         
-        <div class="content">
-            <h1>My Portfolio</h1>
-            <p>Thank you for visiting! I'm currently building my portfolio website to showcase my work and skills. Please check back soon for the complete experience.</p>
-            
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-            
-            <div class="coming-soon">
-                <div class="section-card">
-                    <div class="section-icon">📂</div>
-                    <span>Projects</span>
-                </div>
-                <div class="section-card">
-                    <div class="section-icon">👤</div>
-                    <span>About Me</span>
-                </div>
-                <div class="section-card">
-                    <div class="section-icon">🛠️</div>
-                    <span>Skills</span>
+        <!-- Home Section -->
+        <section id="home" class="section">
+            <div class="heading-text">
+                <h1>Hi, I'm Aimel Hassan</h1>
+                <h3>CS Student & AI Developer</h3>
+                <p>Building intelligent AI web systems that provide reliable solutions and understand human emotions.</p>
+                
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/AimelHassan" target="_blank" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:aimel@example.com" aria-label="Email Me">
+                        <i class="fas fa-envelope"></i>
+                    </a>
                 </div>
             </div>
-            
-            <div class="contact">
-                <p>Expected completion: Coming soon</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                </div>
+                  
+                <div class="about-text">
+                    <p>I'm a Computer Science student at FAST-NUCES with a passion for creating intelligent systems that understand human emotions and behavior. My work focuses on the intersection of artificial intelligence, natural language processing, and web development.</p> <br>
+                    <p>With a strong foundation in programming languages like Python, JavaScript, and C++, I have developed a range of projects that showcase my skills in AI and web development. I am particularly interested in machine learning, data analysis, and building user-friendly applications.</p>
+                    <p>In addition to my technical skills, I am a strong communicator with experience in MUNS and appreciate collaboration with others.</p>
+                </div>
+                <div class="education-highlight">
+                    <h3>Education</h3>
+                    <p><strong>Bachelor's of Computer Science</strong> at FAST-NUCES, Islamabad</p>
+                    <p>GPA: 3.65 | Dean's List</p>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <!-- Surah Recommender AI -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Surah Recommender AI</h3>
+                        <p>An emotion-aware Quranic surah recommendation system using fine-tuned SentenceTransformer embeddings, FAISS for similarity search, sentiment analysis, and Retrieval-Augmented Generation with Gemini API. Deployed via Flask on Hugging Face Spaces.</p>
+                        
+                        <div class="tech-stack">
+                            <div class="tech-icon" title="Python">
+                                <i class="devicon-python-plain"></i>
+                            </div>
+                            <div class="tech-icon" title="TensorFlow">
+                                <i class="devicon-tensorflow-original"></i>
+                            </div>
+                            <div class="tech-icon" title="Flask">
+                                <i class="devicon-flask-original"></i>
+                            </div>
+                            <div class="tech-icon" title="Hugging Face">
+                                <i class="devicon-huggingface-plain"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://huggingface.co/spaces/aimelxd/surah-recommender-ai" class="demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="github-btn" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Buzzombers SFML Game -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>BuzzBombers</h3>
+                        <p>A game built with SFML, delivering engaging gameplay and fun mechanics. Recreation of the 2D 90s game in C++, featuring dynamic sprites, collision detection, and animated environments.</p>
+                        
+                        <div class="tech-stack">
+                            <div class="tech-icon" title="C++">
+                                <i class="devicon-cplusplus-plain"></i>
+                            </div>
+                      
+                            <div class="tech-icon" title="Git">
+                                <i class="devicon-git-plain"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/AimelHassan/BuzzBombersPF" class="github-btn" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hiking Hub Website -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Hiking Hub Website</h3>
+                        <p>A hiking-themed website featuring a unique compass-style navigation that adds an adventurous touch. Designed with a professional and exploration-driven aesthetic using responsive design principles.</p>
+                        
+                        <div class="tech-stack">
+                            <div class="tech-icon" title="HTML5">
+                                <i class="devicon-html5-plain"></i>
+                            </div>
+                            <div class="tech-icon" title="CSS3">
+                                <i class="devicon-css3-plain"></i>
+                            </div>
+                            <div class="tech-icon" title="JavaScript">
+                                <i class="devicon-javascript-plain"></i>
+                            </div>
+                            <div class="tech-icon" title="Bootstrap">
+                                <i class="devicon-bootstrap-plain"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="#" class="demo-btn" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Site
+                            </a>
+                            <a href="#" class="github-btn" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contact Me</h2>
+            <div class="contact-form">
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit" class="login-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Aimel Hassan. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const sections = document.querySelectorAll('.section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Function to set active nav item
+        function setActiveNavItem(id) {
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${id}`) {
+                    item.classList.add('active');
+                    
+                    // Center the active link (for desktop only)
+                    if (window.innerWidth > 768) {
+                        const navLinksList = document.querySelector('.nav-links');
+                        const activeItem = item.parentElement;
+                        const activeItemPosition = activeItem.offsetLeft + (activeItem.offsetWidth / 2);
+                        const centerPosition = navLinksList.offsetWidth / 2;
+                        
+                        // Only apply centering if a significant shift is needed
+                        if (Math.abs(activeItemPosition - centerPosition) > 50) {
+                            navLinksList.scrollTo({
+                                left: activeItemPosition - centerPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        }
+
+        // Set active nav item on click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Close mobile menu
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                
+                // Get the target section
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                // Set active class
+                setActiveNavItem(targetId);
+                
+                // Scroll smoothly to the target section
+                targetSection.scrollIntoView({ 
+                    behavior: 'smooth' 
+                });
+                
+                // Update URL without page reload
+                history.pushState(null, null, `#${targetId}`);
+            });
+        });
+        
+        // Set active nav item on scroll
+        function onScroll() {
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                // Check if we've scrolled to this section (with some buffer for better UX)
+                if (pageYOffset >= (sectionTop - 150)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            if (currentSection !== '') {
+                setActiveNavItem(currentSection);
+            }
+        }
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', onScroll);
+        
+        // Initial check for active section on page load
+        window.addEventListener('load', () => {
+            // If URL has a hash, activate that section
+            if (window.location.hash) {
+                const id = window.location.hash.substring(1);
+                setActiveNavItem(id);
+            } else {
+                // Otherwise activate first section
+                setActiveNavItem('home');
+            }
+            
+            // Also check scroll position in case page is loaded at a specific position
+            onScroll();
+        });
+    
+        // Spotlight effect
+        document.addEventListener('mousemove', (event) => {
+            const spotlight = document.querySelector('.spotlight');
+            const x = event.clientX;
+            const y = event.clientY;
+        
+            spotlight.style.left = `${x}px`;
+            spotlight.style.top = `${y}px`;
+        });
+    </script>
 </body>
 </html>
