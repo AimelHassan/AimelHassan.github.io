@@ -3,559 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiking HUB</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Portfolio - Work In Progress</title>
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f0f0f0;
             font-family: Arial, sans-serif;
-            position: relative;
-            overflow: hidden;
-            background-image: url('BG.png');
-            background-size: cover; /* Covers entire screen */
-            background-position: center; /* Centers the image */
-            background-repeat: no-repeat; /* Prevents image from repeating */
-            background-attachment: fixed; /* Keeps background fixed while scrolling */
-        }
-        /* Add this to your existing <style> tag */
-
-        /* Light Theme Styles */
-        body.light-theme {
-            background-color: #f4f4f4;
+            background-color: #f5f5f5;
             color: #333;
-        }
-
-        body.light-theme .carousel .card {
-            background-color: #e6e0f3;
-            color: #67256a;
-            border-color: #4a1f5e;
-
-        }
-       body.light-theme .carousel .card p {
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #000000;
-    }
-
-        body.light-theme .sunrise-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #4a1f5e;
-            border-color: #4a1f5e;
-        }
-
-        .theme-toggle-btn {
-            position: fixed;
-            top: 30px;
-            left: 30px;
-            z-index: 9999;
-            background-color: #4a1f5e;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        body.light-theme .theme-toggle-btn {
-            background-color: #f4f4f4;
-            color: #4a1f5e;
-            border: 1px solid #4a1f5e;
-        }
-
-        /* Carousel Base Styles */
-        .carousel {
-            position: relative;
-            width: 600px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
             margin: 0 auto;
-            margin-top: 5%;
         }
-
-        .carousel .card {
-            position: absolute;
-            width: 250px;
-            height: 200px;
-            background-color: #4a1f5e;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        
+        .container {
             display: flex;
-            border:3px solid rgb(255, 218, 5) ;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #dbd9d9;
-            transition: transform 0.5s ease, opacity 0.5s ease, z-index 0.5s ease;
+            justify-content: center;
+            min-height: 100vh;
         }
-            .carousel .card p {
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #ffffff;
-    }
-        .carousel .card.left {
-            transform: translateX(-220px) scale(0.8);
-            opacity: 0.5;
-            z-index: 0;
-        }
-
-        .carousel .card.center {
-            transform: translateY(-30px) scale(1);
-            opacity: 1;
-            z-index: 5001;
-        }
-
-        .carousel .card.right {
-            transform: translateX(220px) scale(0.8);
-            opacity: 0.5;
-            z-index: 0;
-        }
-
-        .carousel .card.enlarged {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(2);
-            z-index: 6000;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Dim Background */
-        .dim-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 5000;
-            display: none;
-        }
-
-        .dim-background.active {
-            display: block;
-        }
-
-/* Bottom cards container */
-.cards-container {
-    position: fixed; /* Fix to viewport */
-    bottom: 24px; /* Stay 20px from the bottom */
-    right: 23px; /* Stay 20px from the right on larger screens */
-    display: flex;
-    flex-direction: row;
-    gap: 3px;
-    z-index: 10; /* Ensure it stays above other content */
-}
-
-    .cards-container .card {
-        width: 150px;
-        height: 100px;
-        border-radius: 8px;
-        overflow: hidden;
-        background-color: #ddd;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .cards-container .card:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        z-index: 10;
-    }
-    .cards-container .card img {
-        width: 100%; /* Make the image fill the card width */
-        height: 100%; /* Maintain the image's aspect ratio */
-        object-fit: cover; /* Ensure the image scales to fit without overflowing */
-        border-radius: inherit; /* Match the card's border radius */
-        display: block; /* Remove any inline gaps caused by the image being an inline element */
-    }
-    .sunrise-container {
-        position: fixed;
-            background-color: rgba(74, 14, 78, 0.8);
-            color: #FFD700;
-            max-width: 300px;
-            margin: 20px auto;
-            padding: 15px;
-            border-radius: 8px;
-            border: 2px solid rgba(255, 215, 0, 0.7);
-            font-family: Arial, sans-serif;
-                    top: 60%;
-            left: 4%
-        }
-
-        .sunrise-title {
+        
+        .wip-banner {
+            background-color: #ff9800;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin-bottom: 40px;
             text-align: center;
             font-weight: bold;
-            font-size: 18px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .content {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .coming-soon {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .section-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+        }
+        
+        .section-icon {
+            font-size: 2rem;
             margin-bottom: 10px;
-            color: rgba(255, 215, 0, 0.9);
+            color: #555;
         }
-
-        .trail-time {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 40px 0;
+            overflow: hidden;
         }
-
-        .trail-time:last-child {
-            border-bottom: none;
+        
+        .progress {
+            width: 30%;
+            height: 100%;
+            background-color: #4CAF50;
+            animation: pulse 2s infinite;
         }
-
-
-
-/* Responsive Design */
-/* Large desktop (1440px and above) */
-@media screen and (min-width: 1440px) {
-    .carousel {
-        width: 800px;
-        height: 400px;
-    }
-
-    .carousel .card {
-        width: 300px;
-        height: 240px;
-        font-size: 1.8rem;
-    }
-
-
-    .carousel .card.left {
-        transform: translateX(-280px) scale(0.8);
-    }
-
-    .carousel .card.right {
-        transform: translateX(280px) scale(0.8);
-    }
-
-    .cards-container .card {
-        width: 180px;
-        height: 120px;
-    }
-}
-
-/* Tablet (768px - 1023px) */
-@media screen and (max-width: 1023px) {
-    .carousel {
-        width: 90%;
-        height: 250px;
-    }
-
-    .carousel .card {
-        width: 200px;
-        height: 160px;
-        font-size: 1.2rem;
-    }
-
-    .carousel .card.left {
-        transform: translateX(-160px) scale(0.8);
-    }
-
-    .carousel .card.right {
-        transform: translateX(160px) scale(0.8);
-    }
-
-    .carousel .card.center {
-        transform: translateY(-20px) scale(1);
-    }
-
-    .cards-container {
-        right: auto; /* Override right alignment */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Adjust for exact center */
-    }
-
-    .cards-container .card {
-        width: 120px;
-        height: 80px;
-    }
-
-}
-
-/* Mobile (320px - 767px) */
-@media screen and (max-width: 767px) {
-    .carousel {
-        height: 200px;
-    }
-
-    .carousel .card {
-        width: 120px;
-        height: 80px;
-        font-size: 1rem;
-    }
-
-    .carousel .card.left {
-        transform: translateX(-120px) scale(0.8);
-    }
-
-    .carousel .card.right {
-        transform: translateX(120px) scale(0.8);
-    }
-
-    .carousel .card.center {
-        transform: translateY(-15px) scale(1);
-    }
-
-    .carousel .card.enlarged {
-        transform: translate(-50%, -50%) scale(1.5);
-    }
-
-    .cards-container {
-        right: auto; /* Override right alignment */
-        left: 50%; /* Center horizontally */
-        transform: translateX(-50%); /* Adjust for exact center */
-        gap: 8px; /* Slightly reduce gap for smaller screens */
-    }
-
-    .cards-container .card {
-        width: 50px;
-        height: 50px;
-    }
-
-    .cards-container .card:hover {
-        transform: scale(1.05);
-    }
-    .sunrise-container{
-        width: 0px;
-        display: none;
-    }
-}
-
-/* Small Mobile (320px and below) */
-@media screen and (max-width: 320px) {
-    .carousel .card {
-        width: 140px;
-        height: 100px;
-        font-size: 0.9rem;
-    }
-
-    .carousel .card.left {
-        transform: translateX(-100px) scale(0.8);
-    }
-
-    .carousel .card.right {
-        transform: translateX(100px) scale(0.8);
-    }
-
-    .carousel .card.center {
-        transform: translateY(-10px) scale(1);
-    }
-
-    .cards-container .card {
-        width: 160px;
-        height: 100px;
-    }
-    .sunrise-container{
-        width: 0px;
-        display: none;
-    }
-}
+        
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .contact {
+            margin-top: 40px;
+            font-style: italic;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .coming-soon {
+                gap: 15px;
+            }
+            
+            .section-card {
+                width: 130px;
+                height: 130px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Loading Overlay - Add this near the top of your <body> tag -->
-<div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-compass">
-        <img src="campass.png" alt="Navigation Compass">
-    </div>
-    <div class="loading-text">Navigating to your destination...</div>
-</div>
-    <button class="theme-toggle-btn">🌓 Toggle Theme</button>
-<!-- Dim Background -->
-    <div class="dim-background"></div>
-    <div class="border-container"></div>
-    <div class = "name-container"></div>
-    <div class = "logo-container"></div>
-    <div class = "button1-container"> <img src="glow.png"></div>
-    <div class = "hidden-box">Hello</div>
-
-    <div class = "button2-container"> <img src ="glow.png"></div>
-    <div class = "hidden2">hi</div>
-
-    <div class="sunrise-container">
-        <div class="sunrise-title">Popular Trails Sun Rise </div>
-        <div class="trail-time">Trail 5   •   6:15 AM</div>
-        <div class="trail-time">Trail 4   •   6:22 AM</div>
-        <div class="trail-time">Trail 7   •   6:10 AM</div>
-    </div>
-
-
-    <!-- Carousel -->
-    <div class="carousel">
-        <div class="card left"><p>WATERFALL FOUND in Trail 4!</p></div>
-        <div class="card center"><p> LOST HIKER remains found</p></div>
-        <div class="card right"><p> Hiking reported the best hobby </p></div>
-    </div>
-       <!--Compass-->
-       <div class="compass-container">
-        <!-- Direction Buttons -->
-        <a href="main.html" class="direction north-label">Home</a>
-        <a href="trails.html" class="direction east-label">Trails</a>
-        <a href="FAQ.html" class="direction southeast-label">FAQ</a>
-        <a href="resources.html" class="direction south-label">Resources</a>
-        <a href="event.html" class="direction west-label">Events</a>
-        <a href="Tales.html" class="direction southwest-label">Tales</a>
-
-        <!-- Compass Element -->
-        <div class="compass">
-            <img src="campass.png" alt="Compass">
+    <div class="container">
+        <div class="wip-banner">WORK IN PROGRESS</div>
+        
+        <div class="content">
+            <h1>My Portfolio</h1>
+            <p>Thank you for visiting! I'm currently building my portfolio website to showcase my work and skills. Please check back soon for the complete experience.</p>
+            
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            
+            <div class="coming-soon">
+                <div class="section-card">
+                    <div class="section-icon">📂</div>
+                    <span>Projects</span>
+                </div>
+                <div class="section-card">
+                    <div class="section-icon">👤</div>
+                    <span>About Me</span>
+                </div>
+                <div class="section-card">
+                    <div class="section-icon">🛠️</div>
+                    <span>Skills</span>
+                </div>
+            </div>
+            
+            <div class="contact">
+                <p>Expected completion: Coming soon</p>
+            </div>
         </div>
     </div>
-<!-- Bottom-right Cards -->
-<div class="cards-container">
-    <a href="trails.html" class="card">
-        <img src="images/trail2.jpg "alt="Image 1">
-    </a>
-    <a href="trails.html" class="card">
-        <img src="images/trail7.jpg" alt="Image 2">
-    </a>
-    <a href="trails.html" class="card">
-        <img src="images/trail3.webp" alt="Image 3">
-    </a>
-</div>
-    <script>
-        // Select elements
-        const carouselCards = document.querySelectorAll('.carousel .card');
-        const dimBackground = document.querySelector('.dim-background');
-
-        let intervalId; // Store the interval for rotation
-
-        // Function to rotate cards
-        function rotateCarouselCards() {
-            carouselCards.forEach((card) => {
-                if (card.classList.contains('left')) {
-                    card.classList.remove('left');
-                    card.classList.add('center');
-                } else if (card.classList.contains('center')) {
-                    card.classList.remove('center');
-                    card.classList.add('right');
-                } else if (card.classList.contains('right')) {
-                    card.classList.remove('right');
-                    card.classList.add('left');
-                }
-            });
-        }
-
-        // Start the rotation
-        function startRotation() {
-            intervalId = setInterval(rotateCarouselCards, 4000); // Rotate every 4 seconds
-        }
-
-        // Stop the rotation
-        function stopRotation() {
-            clearInterval(intervalId);
-        }
-
-        // Event to handle enlarging the center card
-        carouselCards.forEach((card) => {
-            card.addEventListener('click', () => {
-                if (card.classList.contains('center')) {
-                    stopRotation(); // Stop rotation
-                    card.classList.add('enlarged'); // Enlarge card
-                    dimBackground.classList.add('active'); // Show dim background
-
-                    // Event to close enlarged card
-                    dimBackground.addEventListener(
-                        'click',
-                        () => {
-                            card.classList.remove('enlarged'); // Remove enlarged class
-                            dimBackground.classList.remove('active'); // Hide background
-                            startRotation(); // Restart rotation
-                        },
-                        { once: true }
-                    );
-                }
-            });
-        });
-
-        // Start carousel rotation
-        startRotation();
-// Theme Toggle Functionality
-const themeToggleBtn = document.querySelector('.theme-toggle-btn');
-
-// Load and apply saved theme on page load
-document.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme'); // Retrieve saved theme
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-theme'); // Apply light theme
-    } else {
-        document.body.classList.add('dark-theme'); // Apply dark theme (default)
-    }
-});
-
-        // Toggle theme and save preference
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.body.classList.contains('light-theme')) {
-                document.body.classList.remove('light-theme');
-                document.body.classList.add('dark-theme'); // Switch to dark theme
-                localStorage.setItem('theme', 'dark'); // Save preference as dark
-            } else {
-                document.body.classList.remove('dark-theme');
-                document.body.classList.add('light-theme'); // Switch to light theme
-                localStorage.setItem('theme', 'light'); // Save preference as light
-            }
-        });
-    
-
-        //JAVASCRIPT FOR THE LOADING ANIMATION
-    document.addEventListener('DOMContentLoaded', () => {
-    const loadingOverlay = document.getElementById('loadingOverlay');
-    const compassLinks = document.querySelectorAll('.direction');
-
-    function preventScrolling(e) {
-        e.preventDefault();
-    }
-
-    compassLinks.forEach(link => {
-        link.addEventListener('click', handleNavigation);
-        link.addEventListener('touchstart', handleNavigation);
-    });
-
-    function handleNavigation(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const link = e.currentTarget;
-        const targetUrl = link.getAttribute('href');
-        const destination = link.textContent;
-
-        document.body.addEventListener('touchmove', preventScrolling, { passive: false });
-
-        loadingOverlay.style.display = 'flex';
-        loadingOverlay.offsetWidth;
-        loadingOverlay.style.opacity = '1';
-
-        const loadingText = loadingOverlay.querySelector('.loading-text');
-        loadingText.textContent = `Exploring ${destination}...`;
-
-        setTimeout(() => {
-            document.body.removeEventListener('touchmove', preventScrolling);
-            window.location.href = targetUrl;
-        }, 1500);
-    }
-
-    window.addEventListener('pageshow', (event) => {
-        loadingOverlay.style.display = 'none';
-        loadingOverlay.style.opacity = '0';
-        document.body.removeEventListener('touchmove', preventScrolling);
-    });
-
-    document.addEventListener('touchstart', (e) => {
-        if (e.touches.length > 1) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-});
-    </script>
 </body>
 </html>
