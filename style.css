@@ -360,6 +360,7 @@ section h2 {
     transform: translateY(-10px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s quick;
 }
 
 .project-card:before {
@@ -597,6 +598,102 @@ footer {
     background-color: rgb(143, 143, 143);
     transform: scale(1.05);
 }
+/* Sliding Animation Base Styles */
+#about, #projects, #contact {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#about.animated, #projects.animated, #contact.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cascade effect for project cards */
+.project-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border 0.3s ease;
+    transition-delay: 0.2s;
+}
+
+.project-card:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.project-card:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.project-card.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Preserve existing hover effects by separating them */
+.project-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Form elements animation */
+.contact-form input, 
+.contact-form textarea, 
+.contact-form button {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.3s ease;
+}
+
+.contact-form.animated input, 
+.contact-form.animated textarea, 
+.contact-form.animated button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-form.animated input:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.contact-form.animated input:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.contact-form.animated textarea {
+    transition-delay: 0.4s;
+}
+
+.contact-form.animated button {
+    transition-delay: 0.5s;
+}
+
+/* Make sure the about section content animates nicely */
+.about-content {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.2s;
+}
+
+.about-content.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.education-highlight {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition-delay: 0.4s;
+}
+
+.education-highlight.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 @media (max-width: 768px) {
     .nav-links {
@@ -667,6 +764,9 @@ footer {
 
     .hamburger {
         display: block;
+        z-index: 1000;
+        margin-right: 1.4rem;
+        cursor: pointer;
     }
 
     .hamburger.active span:nth-child(1) {
@@ -775,25 +875,41 @@ footer {
 
 /* Small phone screens */
 @media (max-width: 480px) {
+  /* Update this section in your CSS file */
+@media (max-width: 480px) {
     .heading-text h1 {
-        font-size: 36px;
-        white-space: normal;
-        width: 100%;
-        border-right: none;
-        animation: none;
+        font-size: 2.9rem; /* Slightly smaller font */
+        white-space: nowrap; /* Keep this for animation to work */
+        width: 0; /* Start at 0 width */
+        border-right: 2px solid #858585; /* Keep the cursor */
+        overflow: hidden;
+        margin: 3rem auto;
         text-align: center;
+        animation: typing-small 3s steps(46, end) forwards, blink 0.5s step-end infinite alternate;
     }
     
+    @keyframes typing-small {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 20ch; /* Adjust this to fit your text on mobile */
+        }
+    }
+    
+    /* Rest of your mobile styles... */
+}
+    
     .heading-text h3 {
-        font-size: 1.3rem;
+        font-size: 2.3rem;
     }
     
     .heading-text p {
-        font-size: 1.1rem;
+        font-size: 2rem;
     }
     
     .social-icons {
-        gap: 1rem;
+        gap: 3rem;
     }
     
     .social-icons a {
@@ -802,7 +918,7 @@ footer {
     }
     
     .social-icons a i {
-        font-size: 1rem;
+        font-size: 2.3rem;
     }
     
     section h2 {
@@ -835,3 +951,4 @@ footer {
         justify-content: center;
     }
 }
+

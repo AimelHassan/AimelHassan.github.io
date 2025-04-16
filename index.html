@@ -296,6 +296,62 @@
             spotlight.style.left = `${x}px`;
             spotlight.style.top = `${y}px`;
         });
+        // Function to check if an element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    // When element is 20% visible from the bottom of the viewport
+    return (
+        rect.top <= windowHeight * 0.8
+    );
+}
+
+// Function to handle the scroll animation
+function handleScrollAnimation() {
+    // Animate main sections
+    const sections = [
+        document.getElementById('about'),
+        document.getElementById('projects'),
+        document.getElementById('contact')
+    ];
+    
+    sections.forEach(section => {
+        if (section && isInViewport(section) && !section.classList.contains('animated')) {
+            section.classList.add('animated');
+            
+            // Handle about section child elements
+            if (section.id === 'about') {
+                const aboutContent = section.querySelector('.about-content');
+                const educationHighlight = section.querySelector('.education-highlight');
+                
+                if (aboutContent) aboutContent.classList.add('animated');
+                if (educationHighlight) educationHighlight.classList.add('animated');
+            }
+            
+            // Handle project cards
+            if (section.id === 'projects') {
+                const projectCards = section.querySelectorAll('.project-card');
+                projectCards.forEach(card => {
+                    card.classList.add('animated');
+                });
+            }
+            
+            // Handle contact form
+            if (section.id === 'contact') {
+                const contactForm = section.querySelector('.contact-form');
+                if (contactForm) contactForm.classList.add('animated');
+            }
+        }
+    });
+}
+
+// Add event listeners for scroll and initial load
+window.addEventListener('scroll', handleScrollAnimation);
+window.addEventListener('load', handleScrollAnimation);
+
+// Also check on resize in case the viewport dimensions change
+window.addEventListener('resize', handleScrollAnimation);
     </script>
 </body>
 </html>
