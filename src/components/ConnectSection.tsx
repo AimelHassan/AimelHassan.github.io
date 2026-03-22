@@ -57,8 +57,8 @@ export default function ConnectSection() {
             
             <div className="connect-link-elem flex flex-col items-end gap-2 group cursor-pointer">
               <span className="text-aurum/40 mb-1">01 / init</span>
-              <Link href="mailto:aimel.hassan@example.com" className="text-lg tracking-[0.2em] group-hover:text-aurum transition-colors duration-500">
-                aimel.hassan@example.com
+              <Link href="mailto:aimelhassan.dev@gmail.com" className="text-lg tracking-[0.2em] group-hover:text-aurum transition-colors duration-500">
+                aimelhassan.dev@gmail.com
               </Link>
               <div className="h-[1px] w-0 group-hover:w-full bg-aurum transition-all duration-700 mt-2"></div>
             </div>
