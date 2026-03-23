@@ -50,9 +50,9 @@ export default function ArchitectureSection() {
         
         {/* Header */}
         <header className="mb-24 md:mb-32 w-full text-center md:text-left flex flex-col items-center md:items-start gap-6">
-          <h1 className="arch-header-elem font-garamond italic text-white text-6xl sm:text-[5rem] md:text-[9rem] leading-none tracking-tighter">
-            the architecture.
-          </h1>
+          <h2 className="arch-header-elem font-garamond italic text-white text-6xl sm:text-[5rem] md:text-[9rem] leading-none tracking-tighter">
+            architecture.
+          </h2>
           <p className="arch-header-elem font-grotesk text-lg md:text-xl text-quicksilver/80 leading-relaxed max-w-2xl text-center md:text-left">
             At FAST, I am forging the computational bedrock where silent logic transforms into autonomous intelligence.
           </p>

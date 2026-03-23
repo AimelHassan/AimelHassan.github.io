@@ -63,9 +63,9 @@ export default function VenturesSection() {
     <section ref={containerRef} id="ventures" className="relative z-10 min-h-screen pt-24 pb-32 px-6 md:pt-48 md:pb-64 md:px-24">
       {/* Section Title */}
       <header className="mb-24 md:mb-48 max-w-4xl">
-        <h1 className="ventures-header-elem font-garamond italic text-white text-6xl sm:text-[5rem] md:text-[10rem] leading-none tracking-tighter">
+        <h2 className="ventures-header-elem font-garamond italic text-white text-6xl sm:text-[5rem] md:text-[10rem] leading-none tracking-tighter">
           ventures.
-        </h1>
+        </h2>
         <p className="ventures-header-elem font-grotesk text-aurum/50 text-[10px] mt-6 tracking-[0.6em] uppercase">
           architecting the future of intelligence
         </p>

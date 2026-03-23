@@ -25,7 +25,7 @@ export default function ArchiveSection() {
     if (isMobile) return;
 
     const sections = gsap.utils.toArray(".archive-card");
-    
+
     // Animate horizontal translation based on vertical scroll
     const scrollTween = gsap.to(sections, {
       xPercent: -100 * (sections.length - 1),
@@ -86,9 +86,9 @@ export default function ArchiveSection() {
       <section ref={sectionRef} id="archive" className="relative py-24 w-full bg-obsidian z-10 flex flex-col">
         {/* Mobile Heading */}
         <div className="px-8 pb-12 pointer-events-none select-none z-30">
-          <h1 className="font-garamond italic text-[6rem] text-quicksilver opacity-20 leading-none tracking-tighter">
+          <h2 className="font-garamond italic text-[6rem] text-quicksilver opacity-20 leading-none tracking-tighter">
             archive.
-          </h1>
+          </h2>
         </div>
 
         {/* Native Horizontal Scroll Wrapper for Mobile */}
@@ -183,28 +183,28 @@ export default function ArchiveSection() {
     <section ref={sectionRef} id="archive" className="relative h-screen w-full bg-obsidian z-10 flex flex-col overflow-hidden">
       {/* Fixed Archive Heading (Absolute relative to section) */}
       <div className="absolute top-[15%] left-6 md:left-auto md:right-24 pointer-events-none select-none z-30">
-        <h1 className="font-garamond italic text-[8rem] sm:text-[10rem] md:text-[12rem] text-quicksilver opacity-20 leading-none tracking-tighter">
+        <h2 className="font-garamond italic text-[8rem] sm:text-[10rem] md:text-[12rem] text-quicksilver opacity-20 leading-none tracking-tighter">
           archive.
-        </h1>
+        </h2>
       </div>
 
       {/* GSAP Horizontal Scroll Wrapper */}
       <div ref={scrollWrapperRef} className="flex-1 w-[300vw] flex h-full relative z-10 flex-nowrap">
-        
+
         {/* Project 03: Boostly Bot */}
         <article className="archive-card w-screen h-full flex items-center justify-center relative px-6 md:px-24">
           <div className="max-w-4xl w-full flex flex-col items-start gap-8 md:gap-12 relative">
-            <div className="archive-num absolute top-0 -translate-y-full md:-top-32 left-0 font-garamond italic text-[4rem] md:text-[12rem] text-muted-aurum/10 select-none pointer-events-none">
+            <div className="archive-num absolute -top-30 left-0 font-garamond italic text-[4rem] md:text-[12rem] text-muted-aurum/10 select-none pointer-events-none leading-none">
               03
             </div>
-            
+
             <div className="space-y-4 md:space-y-6 relative z-10 reveal-elem">
               <h2 className="font-grotesk text-4xl md:text-6xl font-bold text-aurum tracking-tight uppercase">Boostly Bot</h2>
               <p className="font-grotesk text-base md:text-xl text-quicksilver/80 leading-relaxed max-w-2xl">
                 Engineered a RAG-based support chatbot using Python to dynamically retrieve context-specific answers from vectorized knowledge bases. Leveraged advanced embedding methodologies to secure a <strong className="text-aurum font-normal">B2B enterprise contract</strong>.
               </p>
             </div>
-            
+
             <div className="flex flex-col gap-8 relative z-10 reveal-elem">
               <div className="flex flex-wrap gap-4">
                 <span className="px-4 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">Python</span>
@@ -216,7 +216,7 @@ export default function ArchiveSection() {
                 View Demo
               </Link>
             </div>
-            
+
             {/* Abstract Visual Indicator */}
             <div className="absolute -right-20 top-1/2 -translate-y-1/2 w-96 h-96 opacity-10 pointer-events-none">
               <div className="w-full h-full rounded-full border border-primary animate-spin" style={{ animationDuration: "20s", borderStyle: "dashed" }}></div>
@@ -228,17 +228,17 @@ export default function ArchiveSection() {
         {/* Project 04: Surah Recommender AI */}
         <article className="archive-card w-screen h-full flex items-center justify-center relative px-24">
           <div className="max-w-4xl w-full flex flex-col items-start gap-12 relative">
-            <div className="archive-num absolute top-0 -translate-y-full md:-top-32 left-0 font-garamond italic text-[4rem] md:text-[12rem] text-muted-aurum/10 select-none pointer-events-none">
+            <div className="archive-num absolute -top-30 left-0 font-garamond italic text-[4rem] md:text-[12rem] text-muted-aurum/10 select-none pointer-events-none leading-none">
               04
             </div>
-            
+
             <div className="space-y-4 md:space-y-6 z-10 reveal-elem">
               <h2 className="font-grotesk text-4xl md:text-6xl font-bold text-aurum tracking-tight uppercase">Surah Recommender AI</h2>
               <p className="font-grotesk text-base md:text-xl text-quicksilver/80 leading-relaxed max-w-2xl">
                 Fine-tuned all-mpnet-v2 embeddings on a custom dataset achieving <strong className="text-aurum font-normal">0.9+ Pearson correlation</strong>. Built a FAISS-powered semantic search integrated with Gemini-based RAG for context-aware recommendations, deployed globally via Flask.
               </p>
             </div>
-            
+
             <div className="flex flex-col gap-8 z-10 reveal-elem">
               <div className="flex flex-wrap gap-4">
                 <span className="px-4 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">FAISS</span>
@@ -249,7 +249,7 @@ export default function ArchiveSection() {
                 Access Kernel
               </Link>
             </div>
-            
+
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-aurum/5 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
           </div>
         </article>
@@ -257,17 +257,17 @@ export default function ArchiveSection() {
         {/* Project 05: ParhaDe */}
         <article className="archive-card w-screen h-full flex items-center justify-center relative px-24">
           <div className="max-w-4xl w-full flex flex-col items-start gap-12 relative">
-            <div className="archive-num absolute top-0 -translate-y-full md:-top-32 left-0 font-garamond italic text-[4rem] md:text-[12rem] text-muted-aurum/10 select-none pointer-events-none">
+            <div className="archive-num absolute -top-30 left-0 font-garamond italic text-[4rem] md:text-[12rem] text-muted-aurum/10 select-none pointer-events-none leading-none">
               05
             </div>
-            
+
             <div className="space-y-4 md:space-y-6 z-10 reveal-elem">
               <h2 className="font-grotesk text-4xl md:text-6xl font-bold text-aurum tracking-tight uppercase">ParhaDe</h2>
               <p className="font-grotesk text-base md:text-xl text-quicksilver/80 leading-relaxed max-w-2xl">
                 Developing a scalable full-stack peer-tutoring marketplace connecting junior students with senior academic mentors. Features a dynamic algorithmic matching system mapping course codes, time availability, and expertise levels.
               </p>
             </div>
-            
+
             <div className="flex flex-col gap-8 z-10 reveal-elem">
               <div className="flex flex-wrap gap-4">
                 <span className="px-4 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">React</span>

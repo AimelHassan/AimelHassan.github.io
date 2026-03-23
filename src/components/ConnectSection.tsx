@@ -43,9 +43,9 @@ export default function ConnectSection() {
       <div className="max-w-4xl w-full flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end gap-24 md:gap-12 pb-12 md:pb-32 relative z-10">
         
         {/* Left: Giant Heading */}
-        <h1 className="connect-header-elem font-garamond italic text-7xl sm:text-[8rem] md:text-[12rem] leading-none tracking-tighter text-white -translate-y-8 md:-translate-y-16">
+        <h2 className="connect-header-elem font-garamond italic text-7xl sm:text-[8rem] md:text-[12rem] leading-none tracking-tighter text-white -translate-y-8 md:-translate-y-16">
           connect<span className="text-aurum">.</span>
-        </h1>
+        </h2>
 
         {/* Right: Terminal Details */}
         <div className="flex flex-col gap-12 text-center md:text-right relative">
