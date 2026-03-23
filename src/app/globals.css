@@ -95,7 +95,6 @@ body {
   /* GPU-promote commonly animated elements to avoid layout thrashing */
   .hero-elem,
   .reveal-elem,
-  .archive-card,
   .project-block,
   .connect-link-elem,
   .ventures-header-elem {
