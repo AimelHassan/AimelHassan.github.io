@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -11,57 +11,190 @@ gsap.registerPlugin(ScrollTrigger);
 export default function ArchiveSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useGSAP(() => {
-    const sections = gsap.utils.toArray(".archive-card");
-    
-    // Animate horizontal translation based on vertical scroll
-    const scrollTween = gsap.to(sections, {
-      xPercent: -100 * (sections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        pin: true,
-        scrub: 1,
-        // Calculate the exact amount to scrub based on total scrollable width
-        end: () => "+=" + (scrollWrapperRef.current?.scrollWidth || window.innerWidth),
-        invalidateOnRefresh: true,
-        refreshPriority: 1,
-      }
-    });
+    if (isMobile) {
+      // Mobile: simple fade-in-up reveals, no horizontal scroll at all
+      const cards = gsap.utils.toArray(".archive-card");
+      cards.forEach((card: any) => {
+        gsap.from(card.querySelector(".archive-num"), {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          }
+        });
 
-    // Animate elements inside the horizontally scrolling cards
-    sections.forEach((card: any, index: number) => {
-      // Scale down the giant background number as it comes into view
-      gsap.from(card.querySelector(".archive-num"), {
-        scale: 0.8,
-        opacity: 0,
-        duration: 2,
-        ease: "power2.out",
+        gsap.from(card.querySelectorAll(".reveal-elem"), {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          }
+        });
+      });
+    } else {
+      // Desktop: full horizontal scroll animation
+      const sections = gsap.utils.toArray(".archive-card");
+
+      const scrollTween = gsap.to(sections, {
+        xPercent: -100 * (sections.length - 1),
+        ease: "none",
         scrollTrigger: {
-          trigger: card,
-          containerAnimation: scrollTween,
-          start: "left 75%",
-          toggleActions: "play none none reverse",
+          trigger: sectionRef.current,
+          pin: true,
+          scrub: 1,
+          end: () => "+=" + (scrollWrapperRef.current?.scrollWidth || window.innerWidth),
+          invalidateOnRefresh: true,
+          refreshPriority: 1,
         }
       });
 
-      // Stagger reveal the text content
-      gsap.from(card.querySelectorAll(".reveal-elem"), {
-        y: 50,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: card,
-          containerAnimation: scrollTween,
-          start: "left 75%",
-          toggleActions: "play none none reverse",
-        }
+      sections.forEach((card: any) => {
+        gsap.from(card.querySelector(".archive-num"), {
+          scale: 0.8,
+          opacity: 0,
+          duration: 2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: scrollTween,
+            start: "left 75%",
+            toggleActions: "play none none reverse",
+          }
+        });
+
+        gsap.from(card.querySelectorAll(".reveal-elem"), {
+          y: 50,
+          opacity: 0,
+          duration: 1.2,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            containerAnimation: scrollTween,
+            start: "left 75%",
+            toggleActions: "play none none reverse",
+          }
+        });
       });
-    });
-  }, { scope: sectionRef });
+    }
+  }, { scope: sectionRef, dependencies: [isMobile] });
+
+  // Mobile: vertical stacked layout. Desktop: horizontal scroll.
+  if (isMobile) {
+    return (
+      <section ref={sectionRef} id="archive" className="relative w-full bg-obsidian z-10 py-24 px-6">
+        {/* Archive Heading */}
+        <div className="mb-16">
+          <h1 className="font-garamond italic text-[5rem] text-quicksilver opacity-20 leading-none tracking-tighter">
+            archive.
+          </h1>
+        </div>
+
+        {/* Stacked Cards */}
+        <div className="flex flex-col gap-24">
+          {/* Project 03: Boostly Bot */}
+          <article className="archive-card relative">
+            <div className="flex flex-col items-start gap-6 relative">
+              <div className="archive-num font-garamond italic text-[4rem] text-muted-aurum/10 select-none pointer-events-none leading-none">
+                03
+              </div>
+              <div className="space-y-4 relative z-10 reveal-elem">
+                <h2 className="font-grotesk text-3xl font-bold text-aurum tracking-tight uppercase">Boostly Bot</h2>
+                <p className="font-grotesk text-base text-quicksilver/80 leading-relaxed">
+                  Engineered a RAG-based support chatbot using Python to dynamically retrieve context-specific answers from vectorized knowledge bases. Leveraged advanced embedding methodologies to secure a <strong className="text-aurum font-normal">B2B enterprise contract</strong>.
+                </p>
+              </div>
+              <div className="flex flex-col gap-6 relative z-10 reveal-elem">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">Python</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">FAISS</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">GenAI</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">LLMs</span>
+                </div>
+                <Link href="https://huggingface.co/spaces/aimelxd/chatbotdemoboostly" target="_blank" rel="noopener noreferrer" className="bg-primary text-obsidian px-8 py-3 font-grotesk text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all duration-500 w-fit cursor-pointer text-center">
+                  View Demo
+                </Link>
+              </div>
+            </div>
+          </article>
+
+          {/* Divider */}
+          <div className="h-[1px] w-full bg-quicksilver/10"></div>
+
+          {/* Project 04: Surah Recommender AI */}
+          <article className="archive-card relative">
+            <div className="flex flex-col items-start gap-6 relative">
+              <div className="archive-num font-garamond italic text-[4rem] text-muted-aurum/10 select-none pointer-events-none leading-none">
+                04
+              </div>
+              <div className="space-y-4 z-10 reveal-elem">
+                <h2 className="font-grotesk text-3xl font-bold text-aurum tracking-tight uppercase">Surah Recommender AI</h2>
+                <p className="font-grotesk text-base text-quicksilver/80 leading-relaxed">
+                  Fine-tuned all-mpnet-v2 embeddings on a custom dataset achieving <strong className="text-aurum font-normal">0.9+ Pearson correlation</strong>. Built a FAISS-powered semantic search integrated with Gemini-based RAG for context-aware recommendations, deployed globally via Flask.
+                </p>
+              </div>
+              <div className="flex flex-col gap-6 z-10 reveal-elem">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">FAISS</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">Flask</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">PyTorch</span>
+                </div>
+                <Link href="https://huggingface.co/spaces/aimelxd/surah-recommender-ai" target="_blank" rel="noopener noreferrer" className="bg-primary text-obsidian px-8 py-3 font-grotesk text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all duration-500 w-fit cursor-pointer text-center">
+                  Access Kernel
+                </Link>
+              </div>
+            </div>
+          </article>
+
+          {/* Divider */}
+          <div className="h-[1px] w-full bg-quicksilver/10"></div>
+
+          {/* Project 05: ParhaDe */}
+          <article className="archive-card relative">
+            <div className="flex flex-col items-start gap-6 relative">
+              <div className="archive-num font-garamond italic text-[4rem] text-muted-aurum/10 select-none pointer-events-none leading-none">
+                05
+              </div>
+              <div className="space-y-4 z-10 reveal-elem">
+                <h2 className="font-grotesk text-3xl font-bold text-aurum tracking-tight uppercase">ParhaDe</h2>
+                <p className="font-grotesk text-base text-quicksilver/80 leading-relaxed">
+                  Developing a scalable full-stack peer-tutoring marketplace connecting junior students with senior academic mentors. Features a dynamic algorithmic matching system mapping course codes, time availability, and expertise levels.
+                </p>
+              </div>
+              <div className="flex flex-col gap-6 z-10 reveal-elem">
+                <div className="flex flex-wrap gap-3">
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">React</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">Node.js</span>
+                  <span className="px-3 py-1 border border-quicksilver/20 font-grotesk text-[10px] uppercase tracking-widest text-quicksilver/60">Python</span>
+                </div>
+                <button className="bg-primary text-obsidian px-8 py-3 font-grotesk text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all duration-500 w-fit cursor-pointer">
+                  Inspect Logic
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section ref={sectionRef} id="archive" className="relative h-screen w-full bg-obsidian z-10 flex flex-col overflow-hidden">
